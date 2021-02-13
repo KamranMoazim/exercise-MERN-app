@@ -9,7 +9,8 @@ const Exercise = props => (
     <td>{props.exercise.duration}</td>
     <td>{props.exercise.date.substring(0,10)}</td>
     <td>
-      <Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="http://localhost:5000/exercises/" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
+      {/* <Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="http://localhost:5000/exercises/" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a> */}
+      <Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="https://boring-goldberg-a64d18.netlify.app/exercises/" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
     </td>
   </tr>
 )
@@ -24,7 +25,7 @@ export default class ExercisesList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/exercises/')
+    axios.get('https://boring-goldberg-a64d18.netlify.app/exercises/')
       .then(response => {
         this.setState({ exercises: response.data })
       })
@@ -34,7 +35,7 @@ export default class ExercisesList extends Component {
   }
 
   deleteExercise(id) {
-    axios.delete('http://localhost:5000/exercises/'+id)
+    axios.delete('https://boring-goldberg-a64d18.netlify.app/exercises/'+id)
       .then(response => { console.log(response.data)});
 
     this.setState({
